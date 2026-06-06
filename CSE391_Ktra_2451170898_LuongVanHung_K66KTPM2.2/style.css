@@ -1,6 +1,6 @@
-/* General Setup */
+/* Custom Giao diện */
 body {
-    background-color: #f4f5fa; /* Light grey-blue background */
+    background-color: #f4f5fa; /* Nền xám nhạt */
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -8,7 +8,6 @@ body {
     max-width: 900px;
 }
 
-/* Header */
 .header-title {
     font-weight: 800;
     color: #0d1b3e;
@@ -16,13 +15,13 @@ body {
 }
 
 .btn-add-task {
-    background-color: #7b4dff;
+    background-color: #7b4dff; /* Màu tím */
     color: #ffffff;
     border: none;
     border-radius: 12px;
     padding: 10px 24px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(123, 77, 255, 0.2);
 }
 
 .btn-add-task:hover {
@@ -30,19 +29,22 @@ body {
     color: #ffffff;
 }
 
-/* Cards */
+/* Định dạng thẻ task card */
 .task-card {
     border: none;
-    border-radius: 20px;
+    border-radius: 20px; /* Góc rounded lớn */
     background-color: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Shadow nhẹ */
+    transition: box-shadow 0.2s ease;
 }
 
-/* Typography Inside Cards */
+.task-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
 .task-label {
     display: block;
-    color: #a3a6b4;
+    color: #a3a6b4; /* Chữ "Task", "Priority" xám */
     font-size: 0.85rem;
     margin-bottom: 4px;
 }
@@ -58,12 +60,11 @@ body {
     font-size: 1rem;
 }
 
-/* Priority Colors */
-.priority-high { color: #dc3545; }
-.priority-low { color: #28a745; }
-.priority-medium { color: #ffc107; }
+/* Màu mức độ ưu tiên */
+.priority-high { color: #dc3545; } /* Đỏ */
+.priority-medium { color: #ffc107; } /* Vàng */
+.priority-low { color: #28a745; } /* Xanh lá */
 
-/* Status Badges */
 .status-badge {
     background-color: #eff0f6;
     color: #6c757d;
@@ -71,27 +72,107 @@ body {
     border-radius: 10px;
     font-size: 0.85rem;
     font-weight: 600;
-    display: inline-block;
 }
 
-/* Icons */
+/* Căn chỉnh các icon hành động */
+.task-actions {
+    display: flex;
+    gap: 1rem; /* Khoảng cách giữa các icon */
+    align-items: center;
+}
+
 .action-icon {
     font-size: 1.4rem;
+    color: #a3a6b4; /* Mặc định mờ */
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .action-icon:hover {
     transform: scale(1.1);
 }
 
-.icon-empty { color: #e4e6ef; }
-.icon-purple { color: #7b4dff; border-width: 2px;}
-.icon-edit { color: #1e1e2d; }
-.icon-delete { color: #dc3545; }
+/* Sửa/Xóa icons */
+.icon-edit:hover { color: #0d1b3e; } /* Khi hover đổi màu đậm */
+.icon-delete:hover { color: #dc3545; } /* Khi hover đổi màu đỏ */
 
-/* Thêm hiệu ứng fade khi xóa thẻ */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* Tạo vòng tròn trạng thái bằng Custom CSS (để tái tạo chính xác image_0.png) */
+.status-ring-container {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+/* Vòng tròn mờ (To Do / Read a book) */
+.status-ring-base {
+    border: 2px solid #e4e6ef; /* Mờ */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+/* Vòng tròn màu tím */
+.status-ring-active {
+    border: 2px solid transparent;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Áp dụng vòng tím hoàn chỉnh (cho Book) */
+.icon-status-book .status-ring-active {
+    border-color: #7b4dff;
+}
+
+/* Áp dụng vòng tím loading (cho Market - image_0.png task 3) */
+.icon-status-market .status-ring-active {
+    border-top-color: #7b4dff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Modal Custom Styles */
+.custom-modal {
+    border-radius: 20px;
+    border: 1px solid #7b4dff;
+}
+
+.custom-input {
+    border-radius: 12px;
+    padding: 12px 15px;
+    border-color: #e4e6ef;
+}
+
+.custom-input:focus {
+    border-color: #7b4dff;
+    box-shadow: none;
+}
+
+.priority-select-btn {
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-weight: 600;
+}
+
+.btn-high { color: #dc3545; border-color: #dc3545; }
+.btn-high.active { background-color: #dc3545; color: white; }
+
+.btn-medium { color: #ffc107; border-color: #ffc107; }
+.btn-medium.active { background-color: #ffc107; color: white; }
+
+.btn-low { color: #28a745; border-color: #28a745; }
+.btn-low.active { background-color: #28a745; color: white; }
+
+.btn-submit-task {
+    background-color: #626d7a;
+    color: white;
+    border-radius: 12px;
+    padding: 8px 30px;
+    font-weight: 600;
 }

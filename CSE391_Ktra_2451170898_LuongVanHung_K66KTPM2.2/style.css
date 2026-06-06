@@ -1,0 +1,97 @@
+/* General Setup */
+body {
+    background-color: #f4f5fa; /* Light grey-blue background */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app-container {
+    max-width: 900px;
+}
+
+/* Header */
+.header-title {
+    font-weight: 800;
+    color: #0d1b3e;
+    font-size: 2.2rem;
+}
+
+.btn-add-task {
+    background-color: #7b4dff;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-add-task:hover {
+    background-color: #6536e3;
+    color: #ffffff;
+}
+
+/* Cards */
+.task-card {
+    border: none;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    padding: 8px;
+}
+
+/* Typography Inside Cards */
+.task-label {
+    display: block;
+    color: #a3a6b4;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.task-title {
+    color: #2b303a;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.task-priority {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Priority Colors */
+.priority-high { color: #dc3545; }
+.priority-low { color: #28a745; }
+.priority-medium { color: #ffc107; }
+
+/* Status Badges */
+.status-badge {
+    background-color: #eff0f6;
+    color: #6c757d;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Icons */
+.action-icon {
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.action-icon:hover {
+    transform: scale(1.1);
+}
+
+.icon-empty { color: #e4e6ef; }
+.icon-purple { color: #7b4dff; border-width: 2px;}
+.icon-edit { color: #1e1e2d; }
+.icon-delete { color: #dc3545; }
+
+/* Thêm hiệu ứng fade khi xóa thẻ */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
